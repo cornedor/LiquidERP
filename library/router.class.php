@@ -9,17 +9,17 @@
 
         }
 
-        public function get($route, $action)
+        public function get($route, $action, $options = array())
         {
-            $this->addRoute('GET', $route, $action);
+            $this->addRoute('GET', $route, $action, $options);
         }
 
-        public function post($route, $action)
+        public function post($route, $action, $options = array())
         {
-            $this->addRoute('POST', $route, $action);
+            $this->addRoute('POST', $route, $action, $options);
         }
 
-        public function addRoute($requestMethod, $route, $action)
+        public function addRoute($requestMethod, $route, $action, $options = array())
         {
             // Find all params
             $params = array();
@@ -42,9 +42,10 @@
             }
 
             array_push($this->_routes, array(
-                'requestmethod' => $requestMethod,
-                'regex'         => $route,
-                'action'        => $action
+                'requestmethod'     => $requestMethod,
+                'regex'             => $route,
+                'action'            => $action,
+                'paramvalidation'   => (isset($options['paramvalidation']) ? $options['paramvalidation'] : null)
             ));
         }
 
@@ -58,8 +59,23 @@
                 {
                     $params = array();
                     foreach($matches as $key=>$val)
+                    {
                         if(is_string($key))
+                        {
+                            if($route['paramvalidation'] !== null && isset($route['paramvalidation'][$key]))
+                            {
+                                if(!preg_match('#^' . $route['paramvalidation'][$key] . '$#', $val))
+                                {
+                                    $params = false;
+                                    break;
+                                }
+                            }
                             $params[$key] = rawurldecode($val);
+                        }
+                    }
+
+                    if($params === false)
+                        continue;
 
                     $this->_match = array(
                         'action'    => $route['action'],
