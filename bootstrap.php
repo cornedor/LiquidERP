@@ -39,7 +39,7 @@
         $name = explode('/', $config);
         $name = explode('.', end($name));
 
-        $configs[$name[0]] = include $config;
+        $configs[$name[0]] = (object)include $config;
     }
     $registry->config = (object)$configs;
 
