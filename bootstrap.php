@@ -44,6 +44,15 @@
     $registry->config = (object)$configs;
 
     // ------------------------------------------------------------
+    // Setup the database
+    // ------------------------------------------------------------
+    $registry->db = new Database(
+        $registry->config->database->DSN,
+        $registry->config->database->username,
+        $registry->config->database->password,
+        $registry->config->database->driverArguments);
+
+    // ------------------------------------------------------------
     // Setup the router, load all routes and dispatch
     // ------------------------------------------------------------
     $router = new Router();
