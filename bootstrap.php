@@ -46,11 +46,11 @@
     // ------------------------------------------------------------
     // Setup the database
     // ------------------------------------------------------------
-    $registry->db = new Database(
-        $registry->config->database->DSN,
-        $registry->config->database->username,
-        $registry->config->database->password,
-        $registry->config->database->driverArguments);
+    //$registry->db = new Database(
+    //    $registry->config->database->DSN,
+    //    $registry->config->database->username,
+    //    $registry->config->database->password,
+    //    $registry->config->database->driverArguments);
 
     // ------------------------------------------------------------
     // Setup the router, load all routes and dispatch
@@ -83,7 +83,7 @@
         $controller = $dispatch['classname'] . 'Controller';
         $model = ($modelExists) ? $dispatch['classname'] . 'Model' : null;
 
-        $controller = new $controller($model);
+        $controller = new $controller($model, SYSDIR . '/application/view/');
         $controller->$dispatch['method']($dispatch['params']);
     }
     else

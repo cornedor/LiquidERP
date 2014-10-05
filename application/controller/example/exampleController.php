@@ -8,6 +8,8 @@
                 'Timezone: ' . $this->config->application->timezone
             );
 
-            $this->view->json($example);
+            $this->view->test = $example;
+
+            $this->view->render('example/test.php');
         }
     }

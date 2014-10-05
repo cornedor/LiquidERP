@@ -1,19 +1,19 @@
 <?php
     abstract class Controller
     {
-        private $_registry = null;
+        private $_registry;
 
-        protected $model = null;
-        protected $view = null;
+        protected $model;
+        protected $view;
 
-        public function __construct($model)
+        public function __construct($model, $templatePath)
         {
             $this->_registry = Registry::getInstance();
 
             if($model !== null)
                 $this->model = new $model;
 
-            $this->view = new View();
+            $this->view = new View($templatePath);
         }
 
         final public function __set($index, $value)
