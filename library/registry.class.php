@@ -48,7 +48,7 @@
         public function __get($index)
         {
             if(isset(self::$_storage[$index]))
-                return self::$_storage;
+                return self::$_storage[$index];
 
             return null;
         }
