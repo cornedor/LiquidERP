@@ -3,7 +3,10 @@
     {
         public function index($params)
         {
-            $example = $this->model->getNames();
+            $example = array(
+                $this->model->getNames(),
+                'Timezone: ' . $this->config->application->timezone
+            );
 
             $this->view->json($example);
         }
