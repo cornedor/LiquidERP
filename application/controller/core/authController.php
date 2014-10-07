@@ -15,4 +15,12 @@
 
             $this->view->render('core/login.php');
         }
+
+        /**
+         * Logout
+         */
+        public function logout($params)
+        {
+
+        }
     }
