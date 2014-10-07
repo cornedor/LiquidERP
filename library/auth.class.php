@@ -14,6 +14,7 @@
         {
             $stmt = $this->_registry->prepare('SELECT
                     userid,
+                    twofactor_type,
                     twofactor_token
                 FROM
                     users
@@ -31,12 +32,12 @@
             if($stmt->rowCount() === 1)
             {
                 $userData = $stmt->fetch(PDO::FETCH_OBJ);
-                if($twofactor !== null)
+                if(strlen($userData->twofactor_type) > 0 && $twofactor !== null)
                 {
-
+                    // TODO: Match the 2 factor autentication
                 }
                 
-                
+                $this->_registry->session->auth = $userData->userid;
                 return true;
             }
 
