@@ -54,6 +54,11 @@
         
     
     // ------------------------------------------------------------
+    // Setup the sessionhandler
+    // ------------------------------------------------------------
+    $registry->session = new Session();
+
+    // ------------------------------------------------------------
     // Initialize the viewstorage
     // TODO: Enter the data from the database settings, make it
     // more dynamic
