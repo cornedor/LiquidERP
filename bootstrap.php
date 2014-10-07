@@ -51,6 +51,16 @@
     //    $registry->config->database->username,
     //    $registry->config->database->password,
     //    $registry->config->database->driverArguments);
+        
+    
+    // ------------------------------------------------------------
+    // Initialize the viewstorage
+    // TODO: Enter the data from the database settings, make it
+    // more dynamic
+    // ------------------------------------------------------------
+    $registry->viewStorage = array(
+        'templatedir'       => '/template/default'
+    );
 
     // ------------------------------------------------------------
     // Setup the router, load all routes and dispatch
@@ -60,7 +70,7 @@
     foreach(glob(SYSDIR . '/application/route/*Route.php') as $route)
         include $route;
 
-    $request = $_GET['r'];
+    $request = $_SERVER['REQUEST_URI'];
 
     if($router->match($request, $_SERVER))
     {

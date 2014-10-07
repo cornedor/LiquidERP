@@ -31,7 +31,7 @@
             if($model !== null)
                 $this->model = new $model;
 
-            $this->view = new View($templatePath);
+            $this->view = new View($templatePath, $this->viewStorage);
         }
 
         /**

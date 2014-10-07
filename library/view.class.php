@@ -4,9 +4,10 @@
         private $_storage;
         private $_templatePath;
 
-        public function __construct($templatePath)
+        public function __construct($templatePath, $viewStorage = array())
         {
             $this->_templatePath = $templatePath;
+            $this->_storage = $viewStorage;
         }
 
         public function render($template)
