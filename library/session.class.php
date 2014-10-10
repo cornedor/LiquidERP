@@ -13,6 +13,9 @@
 
         public function __get($index)
         {
-            return $_SESSION[$index];
+            if(isset($_SESSION[$index]))
+                return $_SESSION[$index];
+
+            return null;
         }
     }

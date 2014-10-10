@@ -10,15 +10,22 @@
 
         public function isLoggedin()
         {
-            return true;
+            if($this->_registry->session->authentication !== null)
+                return true;
+            
+            return false;
         }
 
         public function login($username, $password)
         {
+            if($this->isLoggedin() === true)
+                return false;
+
             if(strlen($username) < 3 || strlen($username) > 32 || strlen($password) < 3)
                 return false;
 
             $stmt = $this->_registry->db->prepare('SELECT
+                    userid,
                     hash
                 FROM
                     users
@@ -36,9 +43,19 @@
             $user = $stmt->fetch(PDO::FETCH_OBJ);
 
             if(crypt($password, $user->hash) === $user->hash)
+            {
+                $this->_registry->session->authentication = array(
+                    'userid'    => $user->userid);
+
                 return true;
+            }
 
             return false;
+        }
+
+        public function logout()
+        {
+            $this->_registry->session->authentication = null;
         }
 
         public function create($username, $password)

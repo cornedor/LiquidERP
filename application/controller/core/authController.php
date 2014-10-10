@@ -8,6 +8,9 @@
          */
         public function login($params)
         {
+            if($this->user->isLoggedin())
+                $this->view->redirect('/dashboard');
+
             if($this->request->method === Request::POST)
             {
                 $username = isset($_POST['username']) ? $_POST['username'] : '';
