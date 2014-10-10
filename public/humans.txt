@@ -1,0 +1,12 @@
+# humanstxt.org
+# The humans responsible & technology colophon
+
+# TEAM
+    Kevin van der Burgt             -- Developer                -- @kevinvdburgt
+
+# THANKS
+    -
+
+# TECHNOLOGY COLOPHON
+    HTML5, CSS3, JAVASCRIPT
+    Apache and NGINX Webserver, jQuery, Bootstrap
