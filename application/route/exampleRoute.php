@@ -6,3 +6,4 @@
     //));
 
     $router->get('/example', 'index@example/example');
+    $router->get('/dashboard', 'dashboard@example/example');

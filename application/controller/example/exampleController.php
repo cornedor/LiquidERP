@@ -23,4 +23,9 @@
 
             $this->view->render('example/test.php');
         }
+
+        public function dashboard($params)
+        {
+            $this->view->render('core/dashboard.php');
+        }
     }
