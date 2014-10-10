@@ -34,6 +34,7 @@
          */
         public function logout($params)
         {
-
+            $this->user->logout();
+            $this->view->redirect('/login');
         }
     }
