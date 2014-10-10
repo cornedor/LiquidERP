@@ -6,7 +6,7 @@
             parent::__construct($model, $templatePath);
 
             // User should be loggedin before they can access this controller.
-            if($this->auth->isLoggedin() === false)
+            if($this->user->isLoggedin() === false)
             {
                 $this->view->redirect('/login');
             }

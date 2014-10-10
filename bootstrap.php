@@ -46,11 +46,11 @@
     // ------------------------------------------------------------
     // Setup the database
     // ------------------------------------------------------------
-    //$registry->db = new Database(
-    //    $registry->config->database->DSN,
-    //    $registry->config->database->username,
-    //    $registry->config->database->password,
-    //    $registry->config->database->driverArguments);
+    $registry->db = new Database(
+        $registry->config->database->DSN,
+        $registry->config->database->username,
+        $registry->config->database->password,
+        $registry->config->database->driverArguments);
         
     
     // ------------------------------------------------------------
@@ -59,9 +59,9 @@
     $registry->session = new Session();
 
     // ------------------------------------------------------------
-    // Setup the authenticion handler
+    // Setup the user handler
     // ------------------------------------------------------------
-    $registry->auth = new Auth();
+    $registry->user = new User();
 
     // ------------------------------------------------------------
     // Initialize the viewstorage
@@ -115,7 +115,8 @@
     // ------------------------------------------------------------
     // Print some debug information
     // ------------------------------------------------------------
-    echo '<!--' . ENDL;
+    echo ENDL . '<!--' . ENDL;
     echo 'TIME: ' . (microtime(true) - LIQUID_TIME) . ENDL;
     echo 'MEMORY: ' . ((memory_get_usage(true) - LIQUID_MEMORY) / 1024 / 1024) . ' MB' . ENDL;
     echo '-->';
+
