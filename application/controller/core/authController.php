@@ -8,6 +8,21 @@
          */
         public function login($params)
         {
+            if($this->request->method === Request::POST)
+            {
+                $username = isset($_POST['username']) ? $_POST['username'] : '';
+                $password = isset($_POST['password']) ? $_POST['password'] : '';
+
+                if($this->user->login($username, $password) === true)
+                {
+                    $this->view->redirect('/dashboard');
+                }
+                else
+                {
+                    $this->view->errormsg = 'Invalid username of password';
+                }
+            }
+
             $this->view->render('core/login.php');
         }
 

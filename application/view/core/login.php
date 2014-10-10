@@ -11,8 +11,9 @@
         <div class="container">
             <form method="POST" class="form-signin" role="form" action="/login">
                 <h2 class="form-siging-heading">Please sign in</h2>
-                <input type="text" class="form-control" placeholder="Username" value="demo" required autofocus>
-                <input type="password" class="form-control" placeholder="Password" value="password" required>
+                <span><?php echo strlen($this->errormsg) > 0 ? $this->errormsg : ''; ?></span>
+                <input type="text" name="username" class="form-control" placeholder="Username" value="demo" required autofocus>
+                <input type="password" name="password" class="form-control" placeholder="Password" value="password" required>
                 <label class="checkbox">
                     <input type="checkbox" value="remember-me"> Remember me
                 </label>

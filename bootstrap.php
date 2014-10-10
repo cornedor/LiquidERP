@@ -73,16 +73,20 @@
     );
 
     // ------------------------------------------------------------
-    // Setup the router, load all routes and dispatch
+    // Setup the router, handle the request and load all routes 
+    // and dispatch
     // ------------------------------------------------------------
+    $request = new Request($_SERVER);
+    $registry->request = $request;
+
     $router = new Router();
     
     foreach(glob(SYSDIR . '/application/route/*Route.php') as $route)
         include $route;
 
-    $request = $_SERVER['REQUEST_URI'];
+    //$request = $_SERVER['REQUEST_URI'];
 
-    if($router->match($request, $_SERVER))
+    if($router->match($request->request, $_SERVER))
     {
         $dispatch = $router->dispatch();
 
