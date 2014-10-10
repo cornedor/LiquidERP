@@ -3,14 +3,17 @@
     <head>
         <meta charset="UTF-8">
         <title>Example view</title>
-        <style>
-            * { margin: 0; padding: 0; border: 0; outline: 0; }
-            body { background-color: #0D3245; color: #FFF; font-family: arial; padding: 25px; }
-        </style>
+        
+        <link rel="stylesheet" type="text/css" href="<?php echo $this->templatedir; ?>/bootstrap/css/bootstrap.min.css">
     </head>
     <body>
-        Hello World !<br>
+        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 
-        <pre><?php print_r($this->test); ?></pre>
+        </div>
+        <div class="container">
+
+        </div>
+
+        <!--<pre><?php print_r($this->test); ?></pre>-->
     </body>
 </html>
