@@ -59,6 +59,11 @@
     $registry->session = new Session();
 
     // ------------------------------------------------------------
+    // Setup the authenticion handler
+    // ------------------------------------------------------------
+    $registry->auth = new Auth();
+
+    // ------------------------------------------------------------
     // Initialize the viewstorage
     // TODO: Enter the data from the database settings, make it
     // more dynamic

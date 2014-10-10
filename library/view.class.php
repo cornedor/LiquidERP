@@ -32,6 +32,12 @@
             echo json_encode($mixed);
         }
 
+        public function redirect($uri, $httpCode = 307)
+        {
+            header('Location: ' . $uri);
+            exit;
+        }
+
         final public function __set($index, $value)
         {
             $this->_storage[$index] = $value;

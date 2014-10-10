@@ -9,10 +9,10 @@
     </head>
     <body>
         <div class="container">
-            <form class="form-signin" role="form">
+            <form method="POST" class="form-signin" role="form" action="/login">
                 <h2 class="form-siging-heading">Please sign in</h2>
-                <input type="text" class="form-control" placeholder="Username" required autofocus>
-                <input type="password" class="form-control" placeholder="Password" required>
+                <input type="text" class="form-control" placeholder="Username" value="demo" required autofocus>
+                <input type="password" class="form-control" placeholder="Password" value="password" required>
                 <label class="checkbox">
                     <input type="checkbox" value="remember-me"> Remember me
                 </label>

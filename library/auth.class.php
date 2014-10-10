@@ -10,9 +10,14 @@
             $this->_registry = Registry::getInstance();
         }
 
+        public function isLoggedin()
+        {
+            return true;
+        }
+
         public function login($username, $password, $twofactor = null)
         {
-            $stmt = $this->_registry->prepare('SELECT
+            $stmt = $this->_registry->db->prepare('SELECT
                     userid,
                     twofactor_type,
                     twofactor_token
